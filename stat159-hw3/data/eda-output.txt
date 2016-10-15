@@ -1,0 +1,37 @@
+[1] "Exploratory statistics for the Advertising Data Set"
+
+[1] "TV statistics:"
+[1] "Mean: 147.04"
+[1] "Variance: 7370.95"
+[1] "Median: 149.75"
+[1] "Range: Lower Bound 0.70, Upper Bound 296.40"
+[1] "Interquartile Range: 144.45"
+
+[1] "Radio statistics:"
+[1] "Mean: 23.26"
+[1] "Variance: 220.43"
+[1] "Median: 22.90"
+[1] "Range: Lower Bound 0.00, Upper Bound 49.60"
+[1] "Interquartile Range: 26.55"
+
+[1] "Newspaper statistics:"
+[1] "Mean: 30.55"
+[1] "Variance: 474.31"
+[1] "Median: 25.75"
+[1] "Range: Lower Bound 0.30, Upper Bound 114.00"
+[1] "Interquartile Range: 32.35"
+
+[1] "Sales statistics:"
+[1] "Mean: 14.02"
+[1] "Variance: 27.22"
+[1] "Median: 12.90"
+[1] "Range: Lower Bound 1.60, Upper Bound 27.00"
+[1] "Interquartile Range: 7.02"
+
+[1] "Correlation matrix of the four variables:"
+
+              TV  Radio Newspaper  Sales
+TV        1.0000 0.0548    0.0566 0.7822
+Radio     0.0548 1.0000    0.3541 0.5762
+Newspaper 0.0566 0.3541    1.0000 0.2283
+Sales     0.7822 0.5762    0.2283 1.0000
