@@ -14,6 +14,7 @@ eda: data/Advertising.csv
 
 regression: code/scripts/regression-script.R data/Advertising.csv
 	Rscript code/scripts/regression-script.R
+	
 
 clean: data/eda-output.txt 
 	rm -f data/eda-output.txt
