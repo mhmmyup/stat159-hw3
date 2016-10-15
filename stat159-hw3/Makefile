@@ -20,8 +20,8 @@ eda: data/Advertising.csv
 regression: code/scripts/regression-script.R data/Advertising.csv
 	Rscript code/scripts/regression-script.R
 
-#report: report/report.Rmd
-#	Rscript -e "rmarkdown::render('report/report.Rmd','pdf_document')"
+report: report/report.Rmd
+	Rscript -e "rmarkdown::render('report/report.Rmd','pdf_document')"
 
 #clean various outputs which are messy and annoying
 clean: data/eda-output.txt report/report.pdf
