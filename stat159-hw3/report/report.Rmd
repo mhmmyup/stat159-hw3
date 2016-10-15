@@ -108,19 +108,27 @@ print(cor.table, comment = FALSE, caption.placement = "top", table.placement = '
 Now that we have considered each of the predictors individually, and their relation to one another, we can start to consider the multiple regression model, of form listed above. This model is near impossible to graph in a human-readable format without some other outside tools, so we cannot simply examine the regression model and its graph to gain insight into the model. Although the model may not have a simply graphable form, that importantly plays little into its ability to actually test different values for each of the three advertising amounts - the model will still spit out numeric results, regardless of feasibility of visualization! 
 
 
-Let's start with a table of some basic statistics: the multiple Residual Standard error (RSE), the multiple R^2, and the F-Statistic.
-
+Let's start with a table of some basic statistics: the multiple Residual Standard error (RSE), the multiple R^2, and the F-Statistic. These can all give us insight into the quality of the multiple linear regression model.
 
 
 ```{r include = FALSE, cache=FALSE}
 
-cor.table <- xtable(cor.matrix,
-                    caption = "Correlation matrix for the four Advertising variables",
-                    digits = 4)
+source("../code/functions/regression-functions.R")
+
+f <- round(f_statistic(adv.lm), 0)
+rse <- round(residual_std_error(adv.lm), 2)
+r2 <- round(r_squared(adv.lm), 3)
+
+adv.stats <- rbind(c("Residual Standard Error", rse), c("R2", r2), c("F-statistic", f))
+adv.stats.table <- xtable(adv.stats, caption = "Various statistics for the multiple linear regression model")
 
 ```
 
+```{r results='asis', echo=FALSE, cache=FALSE}
 
+print(adv.stats.table, comment = FALSE, caption.placement = "top", table.placement = '!h')
+
+```
 
 
 
