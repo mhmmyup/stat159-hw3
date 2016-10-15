@@ -94,6 +94,6 @@ print(cor.matrix)
 
 sink()
 
-
+detach(advertising)
 
 
