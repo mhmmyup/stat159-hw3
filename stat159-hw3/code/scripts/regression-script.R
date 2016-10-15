@@ -4,7 +4,12 @@ attach(advertising)
 adv.lm <- lm(Sales ~ TV + Radio + Newspaper)
 adv.lm.summ <- summary(adv.lm)
 
-save(adv.lm, adv.lm.summ, file = 'data/regression.RData')
+tv.reg.summ <- summary(lm(Sales ~ TV))
+radio.reg.summ <- summary(lm(Sales ~ Radio))
+news.reg.summ <- summary(lm(Sales ~ Newspaper))
+
+save(adv.lm, adv.lm.summ, tv.reg.summ, radio.reg.summ, news.reg.summ,
+     file = 'data/regression.RData')
 
 png('images/scatterplot-tv-sales.png')
 plot(TV, Sales)

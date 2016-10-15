@@ -47,18 +47,12 @@ library(xtable)
 require(xtable)
 load("../data/regression.RData")
 
-advertising <- read.csv('../data/Advertising.csv')
-attach(advertising)
-
-tv.reg.summ <- summary(lm(Sales ~ TV))
 tv.table <- xtable(tv.reg.summ$coefficients,
                   caption = "Simple Regression of Sales on TV", digits = 3)
 
-radio.reg.summ <- summary(lm(Sales ~ Radio))
 radio.table <- xtable(radio.reg.summ$coefficients,
                   caption = "Simple Regression of Sales on Radio", digits = 3)
 
-news.reg.summ <- summary(lm(Sales ~ Newspaper))
 news.table <- xtable(news.reg.summ$coefficients,
                   caption = "Simple Regression of Sales on Newspaper", digits = 3)
 
@@ -109,6 +103,24 @@ cor.table <- xtable(cor.matrix,
 print(cor.table, comment = FALSE, caption.placement = "top", table.placement = '!h')
 
 ```
+
+
+Now that we have considered each of the predictors individually, and their relation to one another, we can start to consider the multiple regression model, of form listed above. This model is near impossible to graph in a human-readable format without some other outside tools, so we cannot simply examine the regression model and its graph to gain insight into the model. Although the model may not have a simply graphable form, that importantly plays little into its ability to actually test different values for each of the three advertising amounts - the model will still spit out numeric results, regardless of feasibility of visualization! 
+
+
+Let's start with a table of some basic statistics: the multiple Residual Standard error (RSE), the multiple R^2, and the F-Statistic.
+
+
+
+```{r include = FALSE, cache=FALSE}
+
+cor.table <- xtable(cor.matrix,
+                    caption = "Correlation matrix for the four Advertising variables",
+                    digits = 4)
+
+```
+
+
 
 
 
