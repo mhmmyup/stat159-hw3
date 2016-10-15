@@ -131,6 +131,29 @@ print(adv.stats.table, comment = FALSE, caption.placement = "top", table.placeme
 ```
 
 
+##Conclusions
+
+
+####Do the predictors matter at all?
+
+
+With these statistics we can begin to infer the accuracy of the model.   
+This F-Statistic is very large, and thus, significant. A value around 1 would be insignificant - but the F-statistic is around 570! A significant F-Statistic suggests that at least one of the predictors has a real predictive effect on the dependent **Sales** variable. However, it does not give us any insight, by itself, into which predictors contribute to achieving a significant F-Statistic value.
+
+
+####Are there any predictors which might not be necessary or important?
+
+Now, while the **Newspaper** predictor seemed to have a significant effect in predicting **Sales** when viewed alone, it is perhaps less important or predictive when considered with the other two predictors as well. Not only is its p-value in the multiple linear model extremely insignificant (.86), its coefficient changed signs from positive to negative! However, without further analysis and consideration of other models, reduction techniques, test and training error estimates, etc., it is naive to immediately rule out the **Newspaper** variable. However, using our best intuition at this moment, it is not out of the question that the **Newspaper** predictor does not play a significant role in determining **Sales**.
+
+
+####How good is our model, anyway?
+
+Now, to assess the strength of our model, we can return to our multiple linear regression statistics table and look, this time, at the R2 and RSE values. An R2 value ranges from 0 to 1, and an R2 close to 1 suggests a strong, correlated relationship. The RSE ranges generally from 1 to infinity, but an RSE close to 1 suggests a strong relationship with little error. Thus, as our R2 is large, at almost .9, this suggests that the multiple linear regression model of **Sales** on the 3 advertising predictors is highly correlated. And, the low RSE suggests something similar. Thus, both of our simple goodness of fit and correlation estimates suggest a strong multiple linear regression relation between **Sales** and **TV**, **Radio**, and **Newspaper**. 
+
+####Can our model predict?
+
+We are assuming a good deal of the natural world by suggesting that this relationship can be simply explained with the multiple least squares model. Perhaps these assumptions are too great, regardless of model fit, to really let us predict future values of **Sales** from advertising models. The best way to test our model, of course, would be to test it against real data collected but not used in determining the model. Only looking at the fit of the model and not its potential testing error is 1-sided and short-sighted. The RSE and R2 only tell one part of the tale, and even then, they aren't the best statistics for this kind of work at all! There are more complicated statistics that can adjust our training error or simulate test error to give us better insight into the strength of the model. Perhaps if we had held out some of the values in order to have some test subset after the model was fit, or if we ran some additional statistical tests. But these are beyond the scope of chapter 3.2 and of this project. So we will simply conclude with the notion that this model is naive and cannot possibly be telling the whole story - do with it what you will!
+
 
 
 
