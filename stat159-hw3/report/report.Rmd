@@ -52,15 +52,15 @@ attach(advertising)
 
 tv.reg.summ <- summary(lm(Sales ~ TV))
 tv.table <- xtable(tv.reg.summ$coefficients,
-                  caption = "Simple Regression of Sales on TV")
+                  caption = "Simple Regression of Sales on TV", digits = 3)
 
 radio.reg.summ <- summary(lm(Sales ~ Radio))
 radio.table <- xtable(radio.reg.summ$coefficients,
-                  caption = "Simple Regression of Sales on Radio")
+                  caption = "Simple Regression of Sales on Radio", digits = 3)
 
 news.reg.summ <- summary(lm(Sales ~ Newspaper))
 news.table <- xtable(news.reg.summ$coefficients,
-                  caption = "Simple Regression of Sales on Newspaper")
+                  caption = "Simple Regression of Sales on Newspaper", digits = 3)
 
 
 ```
@@ -81,7 +81,7 @@ However, these simple regression coefficients and their resultant p-values can b
 ```{r include = FALSE, cache=FALSE}
 
 adv.table <- xtable(adv.lm.summ$coefficients,
-                    caption = "Multiple Linear Regression of Sales on TV, Radio, and Newspaper")
+                    caption = "Multiple Linear Regression of Sales on TV, Radio, and Newspaper", digits = 4)
 
 ```
 
@@ -92,7 +92,28 @@ print(adv.table, comment = FALSE, caption.placement = "top", table.placement = '
 ```
 
 
-To gain further understanding into the relationships between the four variables in the Advertising data set, we can examine all of their respective correlations to one another. 
+To gain further understanding into the relationships between the four variables in the Advertising data set, we can examine all of their respective correlations to one another. This can perhaps shed insight into how each predictor interacts and relates to the others, possibly in a confounding manner. Of course, we can also see each predictor's respective correlation with **Sales**, which is beneficial in its own right.
+
+```{r include = FALSE, cache=FALSE}
+
+load('../data/correlation-matrix.RData')
+cor.table <- xtable(cor.matrix,
+                    caption = "Correlation matrix for the four Advertising variables",
+                    digits = 4)
+
+```
+
+
+```{r results='asis', echo=FALSE, cache=FALSE}
+
+print(cor.table, comment = FALSE, caption.placement = "top", table.placement = '!h')
+
+```
+
+
+
+
+
 
 
 
