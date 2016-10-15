@@ -31,6 +31,7 @@ Newspaper.iqr <- IQR(Newspaper)
 
 reg.df <- data.frame(TV, Radio, Newspaper, Sales)
 cor.matrix <- round(cor(reg.df),4)
+save(cor.matrix, file = "data/correlation-matrix.RData")
 
 
 png('images/histogram-sales.png')
