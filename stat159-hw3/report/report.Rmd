@@ -36,18 +36,63 @@ To estimate the coefficients  $\beta_0$,   $\beta_1$, $\beta_2$, and $\beta_3$, 
 
 
 
+##Results
+
+First, we estimate the correlation coefficients and linear relationship between each of the three individual predictors and **Sales**, carrying out a simple linear regression for **Sales** on each of the three predictors.
+
+
+```{r include = FALSE, cache=FALSE}
+#install.packages("xtable")
+library(xtable)
+require(xtable)
+load("../data/regression.RData")
+
+advertising <- read.csv('../data/Advertising.csv')
+attach(advertising)
+
+tv.reg.summ <- summary(lm(Sales ~ TV))
+tv.table <- xtable(tv.reg.summ$coefficients,
+                  caption = "Simple Regression of Sales on TV")
+
+radio.reg.summ <- summary(lm(Sales ~ Radio))
+radio.table <- xtable(radio.reg.summ$coefficients,
+                  caption = "Simple Regression of Sales on Radio")
+
+news.reg.summ <- summary(lm(Sales ~ Newspaper))
+news.table <- xtable(news.reg.summ$coefficients,
+                  caption = "Simple Regression of Sales on Newspaper")
+
+
+```
+
+
+```{r results='asis', echo=FALSE, cache=FALSE}
+print(tv.table, comment = FALSE, caption.placement = "top")
+print(radio.table, comment = FALSE, caption.placement = "top")
+print(news.table, comment = FALSE, caption.placement = "top")
+
+```
 
 
 
+However, these simple regression coefficients and their resultant p-values can be deceiving - they do not necessarily imply that the coefficients will be the same in the multiple linear model, or even that the p-values for each predictor are truly significant when considered with the other predictors in mind. Thus, we then create a table of the coefficients and their significance in the collective multiple linear regression model to gain a better sense of the role each predictor plays in determining **Sales**.
 
 
+```{r include = FALSE, cache=FALSE}
+
+adv.table <- xtable(adv.lm.summ$coefficients,
+                    caption = "Multiple Linear Regression of Sales on TV, Radio, and Newspaper")
+
+```
+
+```{r results='asis', echo=FALSE, cache=FALSE}
+
+print(adv.table, comment = FALSE, caption.placement = "top", table.placement = '!h')
+
+```
 
 
-
-
-
-
-
+To gain further understanding into the relationships between the four variables in the Advertising data set, we can examine all of their respective correlations to one another. 
 
 
 

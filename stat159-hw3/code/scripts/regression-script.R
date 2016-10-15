@@ -36,7 +36,7 @@ png('images/normal-qq-plot.png')
 plot(adv.lm, which = 2)
 dev.off()
 
-
+detach(advertising)
 
 
 
