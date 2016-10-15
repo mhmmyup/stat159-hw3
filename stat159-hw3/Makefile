@@ -2,6 +2,10 @@
 
 all: eda regression report
 
+eda-out = data/eda-output.txt
+adv = data/Advertising.csv
+
+
 #download advertising data from ISLR to local directory
 data:
 	curl http://www-bcf.usc.edu/~gareth/ISL/Advertising.csv >> data/Advertising.csv
@@ -12,7 +16,7 @@ tests: code/test-that.R code/functions/regression-functions.R code/tests/test-re
 
 #carry out exploratory data analysis of the 4 variables, create a correlation matrix.RData file 
 #which can be called later, and make a few simple histograms to better visualize the data
-eda: data/Advertising.csv
+eda: $(adv)
 	Rscript code/scripts/eda-script.R
 
 #carry out basic multiple least squares linear regression, saving the multiple regression objects
@@ -24,5 +28,5 @@ report: report/report.Rmd
 	Rscript -e "rmarkdown::render('report/report.Rmd','pdf_document')"
 
 #clean various outputs which are messy and annoying
-clean: data/eda-output.txt report/report.pdf
-	rm -f data/eda-output.txt report/report.pdf
+clean: $(eda-out) report/report.pdf
+	rm -f $(eda-out) report/report.pdf
